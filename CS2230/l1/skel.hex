@@ -1,0 +1,144 @@
+
+skel.elf:     file format elf32-msp430
+
+
+Disassembly of section .text:
+
+0000c000 <MAIN>:
+    c000:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    c004:	20 01 
+    c006:	d2 42 ff 10 	mov.b	&0x10ff,&0x0057	
+    c00a:	57 00 
+    c00c:	d2 42 fe 10 	mov.b	&0x10fe,&0x0056	
+    c010:	56 00 
+    c012:	31 40 00 04 	mov	#1024,	r1	;#0x0400
+    c016:	f2 e0 41 00 	xor.b	#65,	&0x0021	;#0x0041
+    c01a:	21 00 
+    c01c:	3f 40 e8 03 	mov	#1000,	r15	;#0x03e8
+    c020:	b0 12 26 c0 	call	#0xc026	
+    c024:	f8 3f       	jmp	$-14     	;abs 0xc016
+
+0000c026 <delay_ms>:
+    c026:	0e 4f       	mov	r15,	r14	
+    c028:	3f 40 f5 00 	mov	#245,	r15	;#0x00f5
+    c02c:	1f 83       	dec	r15		
+    c02e:	0f 93       	tst	r15		
+    c030:	fd 23       	jnz	$-4      	;abs 0xc02c
+    c032:	1e 83       	dec	r14		
+    c034:	f9 23       	jnz	$-12     	;abs 0xc028
+    c036:	30 41       	ret			
+
+0000c038 <UNEXPECTED_ISR>:
+    c038:	00 13       	reti			
+
+Disassembly of section .vectors:
+
+0000ffe0 <_efartext+0xffe0>:
+    ffe0:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    ffe4:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    ffe8:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    ffec:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    fff0:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    fff4:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    fff8:	38 c0 38 c0 	bic	#-16328,r8	;#0xc038
+    fffc:	38 c0 00 c0 	bic	#-16384,r8	;#0xc000
+
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	10 00       	.word	0x0010;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	00 00       	.word	0x0000;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	02 00       	.word	0x0002;	????	
+   c:	00 c0       	bic	r0,	r0	
+   e:	3a 00       	.word	0x003a;	????	
+  10:	00 00       	.word	0x0000;	????	
+	...
+
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	37 00       	.word	0x0037;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	00 00       	.word	0x0000;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	02 01       	.word	0x0102;	????	
+   c:	00 00       	.word	0x0000;	????	
+   e:	00 00       	.word	0x0000;	????	
+  10:	00 c0       	bic	r0,	r0	
+  12:	3a c0 73 6b 	bic	#27507,	r10	;#0x6b73
+  16:	65 6c       	addc.b	@r12,	r5	
+  18:	2e 53       	incd	r14		
+  1a:	00 2f       	jc	$-510    	;abs 0xfe1c
+  1c:	68 6f       	addc.b	@r15,	r8	
+  1e:	6d 65       	addc.b	@r5,	r13	
+  20:	2f 64       	addc	@r4,	r15	
+  22:	61 72       	subc.b	#4,	r1	;r2 As==10
+  24:	72 79       	subc.b	@r9+,	r2	
+  26:	6c 2f       	jc	$-294    	;abs 0xff00
+  28:	6c 31       	jn	$+730    	;abs 0x302
+  2a:	00 47       	br	r7		
+  2c:	4e 55       	add.b	r5,	r14	
+  2e:	20 41       	br	@r1		
+  30:	53 20       	jnz	$+168    	;abs 0xd8
+  32:	32 2e       	jc	$-922    	;abs 0xfc98
+  34:	32 31       	jn	$+614    	;abs 0x29a
+  36:	2e 31       	jn	$+606    	;abs 0x294
+  38:	00 01       	.word	0x0100;	????	
+  3a:	80 00       	Address 0x000000000000003a is out of bounds.
+Address 0x000000000000003c is out of bounds.
+and.b	@r15+,	-1(r15)	;0xffff(r15)
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	01 11       	rra	r1		
+   2:	00 10       	rrc	r0		
+   4:	06 11       	rra	r6		
+   6:	01 12       	push	r1		
+   8:	01 03       	.word	0x0301;	????	
+   a:	08 1b       	.word	0x1b08;	????	
+   c:	08 25       	jz	$+530    	;abs 0x21e
+   e:	08 13       	reti			;return from interupt
+  10:	05 00       	.word	0x0005;	????	
+	...
+
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	40 00       	.word	0x0040;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	1d 00       	.word	0x001d;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	01 01       	.word	0x0101;	????	
+   c:	fb 0e       	.word	0x0efb;	????	
+   e:	0d 00       	.word	0x000d;	????	
+  10:	01 01       	.word	0x0101;	????	
+  12:	01 01       	.word	0x0101;	????	
+  14:	00 00       	.word	0x0000;	????	
+  16:	00 01       	.word	0x0100;	????	
+  18:	00 00       	.word	0x0000;	????	
+  1a:	01 00       	.word	0x0001;	????	
+  1c:	73 6b       	.word	0x6b73;	????	Illegal as 2-op instr
+  1e:	65 6c       	addc.b	@r12,	r5	
+  20:	2e 53       	incd	r14		
+  22:	00 00       	.word	0x0000;	????	
+  24:	00 00       	.word	0x0000;	????	
+  26:	00 00       	.word	0x0000;	????	
+  28:	03 02       	.word	0x0203;	????	
+  2a:	00 c0       	bic	r0,	r0	
+  2c:	03 18       	.word	0x1803;	????	
+  2e:	01 67       	addc	r7,	r1	
+  30:	67 69       	addc.b	@r9,	r7	
+  32:	50 68 4b 4b 	addc.b	19275(r8),r0	;0x4b4b(r8)
+  36:	34 2f       	jc	$-406    	;abs 0xfea0
+  38:	4b 2f       	jc	$-360    	;abs 0xfed0
+  3a:	2f 2f       	jc	$-416    	;abs 0xfe9a
+  3c:	2f 2f       	jc	$-416    	;abs 0xfe9c
+  3e:	34 02       	.word	0x0234;	????	
+  40:	02 00       	.word	0x0002;	????	
+  42:	01 01       	.word	0x0101;	????	
